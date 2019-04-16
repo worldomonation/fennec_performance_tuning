@@ -1,3 +1,4 @@
+import csv
 import json
 import os
 import sys
@@ -5,7 +6,7 @@ import sys
 from argparse import ArgumentParser, Namespace
 
 
-def analyze_raptor_run(raptor_log_files, path_to_logs):
+def analyze_raptor_run(raptor_log_files):
     pageload_times = {"amazon": [], 'facebook': [], 'google': [], 'youtube': []}
 
     for log_file in raptor_log_files:
@@ -16,6 +17,9 @@ def analyze_raptor_run(raptor_log_files, path_to_logs):
                 if key in suite['name']:
                     pageload_times[key].append(suite['value'])
 
+    return pageload_times
+
+def calculate(pageload_times, path_to_logs):
     def maximum_deviation(average):
         return max(map(lambda x: abs(x - average), pageload_times[suite]))
 
@@ -25,7 +29,7 @@ def analyze_raptor_run(raptor_log_files, path_to_logs):
     def maximum_difference():
         return float(max(pageload_times[suite]) - min(pageload_times[suite]))
 
-    for suite in pageload_times.keys():
+    def print_results():
         print('-----------------------')
         print(' '.join([
             'Results for',
@@ -48,6 +52,9 @@ def analyze_raptor_run(raptor_log_files, path_to_logs):
             ])
         )
         print('-----------------------')
+
+    for suite in pageload_times.keys():
+        print_results()
 
 
 def analyze_logs(args):
@@ -76,12 +83,14 @@ def analyze_logs(args):
             logs[index] = instance
 
     if all(map(lambda x: os.path.isfile(x), logs)):
-        analyze_raptor_run(logs, path_to_logs)
+        pageload_times = analyze_raptor_run(logs)
+        calculate(pageload_times, path_to_logs)
 
 
 def cli():
     parser = ArgumentParser()
     parser.add_argument('-d', '--directory', action='store', default=None, help='Directory containing raptor logs to analyze.')
+    parser.add_argument('-c', '--csv', action='store_true', default=False, help='Enable output in CSV file format.')
 
     args, _ = parser.parse_known_args(sys.argv)
     return args
