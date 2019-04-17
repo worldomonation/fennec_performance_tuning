@@ -1,5 +1,6 @@
 import csv
 import json
+import math
 import os
 import sys
 
@@ -54,7 +55,7 @@ def calculate(pageload_times, path_to_logs, args):
         print('-----------------------')
 
     if args.csv:
-        csv_file_name = os.path.join(path_to_logs, 'results.csv')
+        csv_file_name = os.path.join(path_to_logs, args.csv or 'results.csv')
         with open(csv_file_name, 'wb') as csvfile:
             csv_writer = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             csv_writer.writerow([
@@ -65,18 +66,34 @@ def calculate(pageload_times, path_to_logs, args):
                 'Minimum',
                 'Maximum Deviation from Average'
             ])
-            for suite in pageload_times.keys():
-                with open(csv_file_name, 'wb') as csvfile:
-                    csv_writer.writerow([
-                        suite,
-                        average(),
-                        maximum_difference(),
-                        max(pageload_times[suite]),
-                        min(pageload_times[suite]),
-                        maximum_deviation(average())
-                    ])
-        print('File successfully written to {}'.format(csv_file_name))
     for suite in pageload_times.keys():
+        if args.mean_value:
+            # round the resulting decimal to the nearest tenth
+            mean_interval = round(float(args.mean_value)/100, 1)
+            if mean_interval > 1.0:
+                print('Mean Interval specified is greater than 100%')
+                return
+
+            temp_list = pageload_times[suite]
+            temp_list.sort()
+            new_len = int(math.floor(mean_interval * len(pageload_times[suite])))
+            original_len = len(pageload_times[suite])
+            len_diff = original_len - new_len
+            temp_list = temp_list[int(len_diff/2):int(len_diff/2)+new_len]
+            pageload_times[suite] = temp_list
+
+        if args.csv:
+            with open(csv_file_name, 'a') as csvfile:
+                csv_writer = csv.writer(
+                    csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                csv_writer.writerow([
+                    suite,
+                    average(),
+                    maximum_difference(),
+                    max(pageload_times[suite]),
+                    min(pageload_times[suite]),
+                    maximum_deviation(average())
+                ])
         print_results()
 
 
@@ -112,7 +129,8 @@ def analyze_logs(args):
 def cli():
     parser = ArgumentParser()
     parser.add_argument('-d', '--directory', action='store', default=None, help='Directory containing raptor logs to analyze.')
-    parser.add_argument('-c', '--csv', action='store_true', default=False, help='Enable output in CSV file format.')
+    parser.add_argument('-c', '--csv', action='store', default=None, help='Enable output in CSV file format.')
+    parser.add_argument('-mv', '--mean_value', action='store', default=0, help='Mean value interval.')
 
     args, _ = parser.parse_known_args(sys.argv)
     return args
