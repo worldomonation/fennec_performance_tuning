@@ -5,6 +5,8 @@ import sys
 
 from argparse import ArgumentParser, Namespace
 
+args = None
+
 
 def analyze_raptor_run(raptor_log_files):
     pageload_times = {"amazon": [], 'facebook': [], 'google': [], 'youtube': []}
@@ -19,7 +21,7 @@ def analyze_raptor_run(raptor_log_files):
 
     return pageload_times
 
-def calculate(pageload_times, path_to_logs):
+def calculate(pageload_times, path_to_logs, args):
     def maximum_deviation(average):
         return max(map(lambda x: abs(x - average), pageload_times[suite]))
 
@@ -53,6 +55,29 @@ def calculate(pageload_times, path_to_logs):
         )
         print('-----------------------')
 
+    if args.csv:
+        csv_file_name = os.path.join(path_to_logs, 'results.csv')
+        with open(csv_file_name, 'wb') as csvfile:
+            csv_writer = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            csv_writer.writerow([
+                '',
+                'Average',
+                'Maximum Difference',
+                'Maximum',
+                'Minimum',
+                'Maximum Deviation from Average'
+            ])
+            for suite in pageload_times.keys():
+                with open(csv_file_name, 'wb') as csvfile:
+                    csv_writer.writerow([
+                        suite,
+                        average(),
+                        maximum_difference(),
+                        max(pageload_times[suite]),
+                        min(pageload_times[suite]),
+                        maximum_deviation(average())
+                    ])
+        print('File successfully written to {}'.format(csv_file_name))
     for suite in pageload_times.keys():
         print_results()
 
@@ -69,23 +94,22 @@ def analyze_logs(args):
         print('Invalid path to logs.')
         return
     else:
-        logs = os.listdir(path_to_logs)
+        list_of_dirs = os.listdir(path_to_logs)
 
-    if not logs:
+    if not list_of_dirs:
         print('No runs were detected.')
         return
 
-    for index, instance in enumerate(logs):
-        instance = os.path.join(path_to_logs, instance)
-        if os.path.isdir(instance):
-            analyze_logs(Namespace(directory=instance))
-        else:
-            logs[index] = instance
+    json_logs = [os.path.join(path_to_logs, item) for index, item in enumerate(list_of_dirs) if item.endswith('json')]
+    directories = [os.path.join(path_to_logs, item) for index, item in enumerate(list_of_dirs) if os.path.isdir(os.path.join(path_to_logs, item))]
 
-    if all(map(lambda x: os.path.isfile(x), logs)):
-        pageload_times = analyze_raptor_run(logs)
-        calculate(pageload_times, path_to_logs)
+    for directory in directories:
+        args.directory = directory
+        analyze_logs(args)
 
+    if json_logs and all(map(lambda x: os.path.isfile(x), json_logs)):
+        pageload_times = analyze_raptor_run(json_logs)
+        calculate(pageload_times, path_to_logs, args)
 
 def cli():
     parser = ArgumentParser()
