@@ -5,8 +5,6 @@ import sys
 
 from argparse import ArgumentParser, Namespace
 
-args = None
-
 
 def analyze_raptor_run(raptor_log_files):
     pageload_times = {"amazon": [], 'facebook': [], 'google': [], 'youtube': []}
