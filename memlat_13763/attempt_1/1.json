@@ -1,0 +1,116 @@
+{
+  "framework": {
+    "name": "raptor"
+  }, 
+  "suites": [
+    {
+      "alertThreshold": 2.0, 
+      "extraOptions": [], 
+      "lowerIsBetter": true, 
+      "name": "raptor-tp6m-facebook-geckoview", 
+      "subtests": [
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "dcf", 
+          "replicates": [
+            1249, 
+            517, 
+            531, 
+            495, 
+            509, 
+            451, 
+            485, 
+            416, 
+            439, 
+            536, 
+            468, 
+            445, 
+            455, 
+            541, 
+            444
+          ], 
+          "unit": "ms", 
+          "value": 476.5
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fcp", 
+          "replicates": [
+            1090, 
+            343, 
+            335, 
+            322, 
+            253, 
+            272, 
+            295, 
+            268, 
+            265, 
+            274, 
+            289, 
+            281, 
+            280, 
+            275, 
+            293
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 280.5
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fnbpaint", 
+          "replicates": [
+            1023, 
+            306, 
+            321, 
+            309, 
+            241, 
+            260, 
+            282, 
+            256, 
+            252, 
+            257, 
+            277, 
+            268, 
+            267, 
+            263, 
+            277
+          ], 
+          "unit": "ms", 
+          "value": 267.5
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "loadtime", 
+          "replicates": [
+            2408, 
+            927, 
+            938, 
+            932, 
+            777, 
+            825, 
+            1102, 
+            813, 
+            953, 
+            805, 
+            844, 
+            886, 
+            865, 
+            822, 
+            849
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 857.0
+        }
+      ], 
+      "type": "pageload", 
+      "unit": "ms", 
+      "value": 418.49
+    }
+  ]
+}
