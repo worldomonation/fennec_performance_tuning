@@ -1,0 +1,443 @@
+{
+  "framework": {
+    "name": "raptor"
+  }, 
+  "suites": [
+    {
+      "alertThreshold": 2.0, 
+      "extraOptions": [], 
+      "lowerIsBetter": true, 
+      "name": "raptor-tp6m-amazon-geckoview", 
+      "subtests": [
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "dcf", 
+          "replicates": [
+            865, 
+            474, 
+            368, 
+            445, 
+            348, 
+            398, 
+            423, 
+            482, 
+            634, 
+            459, 
+            508, 
+            342, 
+            354, 
+            415, 
+            464
+          ], 
+          "unit": "ms", 
+          "value": 434.0
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fcp", 
+          "replicates": [
+            937, 
+            534, 
+            407, 
+            496, 
+            392, 
+            437, 
+            474, 
+            524, 
+            673, 
+            496, 
+            549, 
+            381, 
+            392, 
+            450, 
+            507
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 485.0
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fnbpaint", 
+          "replicates": [
+            882, 
+            492, 
+            388, 
+            464, 
+            365, 
+            415, 
+            440, 
+            503, 
+            654, 
+            475, 
+            526, 
+            361, 
+            373, 
+            431, 
+            486
+          ], 
+          "unit": "ms", 
+          "value": 452.0
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "loadtime", 
+          "replicates": [
+            1280, 
+            886, 
+            582, 
+            625, 
+            395, 
+            443, 
+            461, 
+            528, 
+            677, 
+            496, 
+            597, 
+            414, 
+            434, 
+            487, 
+            517
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 506.5
+        }
+      ], 
+      "type": "pageload", 
+      "unit": "ms", 
+      "value": 468.53
+    }, 
+    {
+      "alertThreshold": 2.0, 
+      "extraOptions": [], 
+      "lowerIsBetter": true, 
+      "name": "raptor-tp6m-facebook-geckoview", 
+      "subtests": [
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "dcf", 
+          "replicates": [
+            1283, 
+            532, 
+            544, 
+            500, 
+            545, 
+            458, 
+            612, 
+            447, 
+            467, 
+            479, 
+            583, 
+            432, 
+            483, 
+            531, 
+            425
+          ], 
+          "unit": "ms", 
+          "value": 491.5
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fcp", 
+          "replicates": [
+            1114, 
+            360, 
+            333, 
+            321, 
+            284, 
+            289, 
+            434, 
+            293, 
+            273, 
+            305, 
+            286, 
+            277, 
+            310, 
+            273, 
+            276
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 291.0
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fnbpaint", 
+          "replicates": [
+            1074, 
+            323, 
+            319, 
+            308, 
+            269, 
+            274, 
+            421, 
+            278, 
+            260, 
+            289, 
+            274, 
+            262, 
+            295, 
+            260, 
+            261
+          ], 
+          "unit": "ms", 
+          "value": 276.0
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "loadtime", 
+          "replicates": [
+            2388, 
+            945, 
+            940, 
+            921, 
+            800, 
+            860, 
+            974, 
+            844, 
+            900, 
+            951, 
+            882, 
+            800, 
+            897, 
+            801, 
+            806
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 889.5
+        }
+      ], 
+      "type": "pageload", 
+      "unit": "ms", 
+      "value": 432.99
+    }, 
+    {
+      "alertThreshold": 2.0, 
+      "extraOptions": [], 
+      "lowerIsBetter": true, 
+      "name": "raptor-tp6m-google-geckoview", 
+      "subtests": [
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "dcf", 
+          "replicates": [
+            1562, 
+            67, 
+            66, 
+            51, 
+            67, 
+            73, 
+            61, 
+            60, 
+            83, 
+            71, 
+            78, 
+            84, 
+            53, 
+            58, 
+            77
+          ], 
+          "unit": "ms", 
+          "value": 67.0
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fcp", 
+          "replicates": [
+            1610, 
+            123, 
+            94, 
+            80, 
+            74, 
+            82, 
+            104, 
+            98, 
+            96, 
+            81, 
+            89, 
+            92, 
+            91, 
+            94, 
+            84
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 91.5
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fnbpaint", 
+          "replicates": [
+            1573, 
+            88, 
+            80, 
+            65, 
+            61, 
+            68, 
+            85, 
+            80, 
+            78, 
+            65, 
+            73, 
+            79, 
+            69, 
+            79, 
+            71
+          ], 
+          "unit": "ms", 
+          "value": 75.5
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "loadtime", 
+          "replicates": [
+            2091, 
+            68, 
+            70, 
+            56, 
+            67, 
+            59, 
+            66, 
+            63, 
+            62, 
+            72, 
+            61, 
+            88, 
+            54, 
+            62, 
+            77
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 64.5
+        }
+      ], 
+      "type": "pageload", 
+      "unit": "ms", 
+      "value": 73.93
+    }, 
+    {
+      "alertThreshold": 2.0, 
+      "extraOptions": [], 
+      "lowerIsBetter": true, 
+      "name": "raptor-tp6m-youtube-geckoview", 
+      "subtests": [
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "dcf", 
+          "replicates": [
+            656, 
+            203, 
+            178, 
+            272, 
+            183, 
+            144, 
+            222, 
+            189, 
+            188, 
+            203, 
+            195, 
+            180, 
+            200, 
+            219, 
+            195
+          ], 
+          "unit": "ms", 
+          "value": 195.0
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fcp", 
+          "replicates": [
+            598, 
+            211, 
+            186, 
+            194, 
+            196, 
+            157, 
+            178, 
+            201, 
+            146, 
+            156, 
+            208, 
+            194, 
+            214, 
+            177, 
+            205
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 194.0
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "fnbpaint", 
+          "replicates": [
+            324, 
+            93, 
+            68, 
+            59, 
+            72, 
+            66, 
+            76, 
+            60, 
+            63, 
+            58, 
+            74, 
+            71, 
+            74, 
+            100, 
+            67
+          ], 
+          "unit": "ms", 
+          "value": 69.5
+        }, 
+        {
+          "alertThreshold": 2.0, 
+          "lowerIsBetter": true, 
+          "name": "loadtime", 
+          "replicates": [
+            901, 
+            347, 
+            247, 
+            244, 
+            314, 
+            207, 
+            236, 
+            199, 
+            307, 
+            339, 
+            329, 
+            289, 
+            310, 
+            321, 
+            318
+          ], 
+          "shouldAlert": true, 
+          "unit": "ms", 
+          "value": 308.5
+        }
+      ], 
+      "type": "pageload", 
+      "unit": "ms", 
+      "value": 168.94
+    }
+  ]
+}
